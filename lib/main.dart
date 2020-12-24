@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:prov8/Notifier/food_notifier.dart';
+import 'package:prov8/Page/home_page.dart';
+import 'package:provider/provider.dart';
 
 
-
+/// [0 Provider]
+// void main() {runApp(MyApp());}
+/// [1 Provider]
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => FoodNotifier(),
+      child: MyApp(),
+    ),
+  );
 }
+
+
 
 
 
