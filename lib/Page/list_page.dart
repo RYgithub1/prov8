@@ -12,11 +12,13 @@ class ListPage extends StatelessWidget {
     FoodNotifierModel foodNotifier = Provider.of<FoodNotifierModel>(context);
     UserNotifierModel userNotifier = Provider.of<UserNotifierModel>(context);
 
+    print("comm: ListView rebuild check");
+
 
     return Scaffold(
       appBar: AppBar(title: Text("FOOD: CHECK PAGE")),
       body: Container(
-        margin: EdgeInsets.all(24),
+        margin: EdgeInsets.all(20),
         child: Column(
           children: <Widget>[
             SizedBox(height: 20),
@@ -33,20 +35,37 @@ class ListPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
+
+            /// [Stop to Rebuild, coz of here]
+            // Text("USER AGE: "+userNotifier.userAge.toString()),
+            Consumer<UserNotifierModel>(
+              builder: (context, val, child){
+                print(userNotifier.userName);
+                print(userNotifier.userAge);
+                // return Container();
+                return Text("USER AGE: "+userNotifier.userAge.toString());
+              },
+            ),
+
+
             RaisedButton(
               child: Text(
                 "btn 1",
-                style: TextStyle(color: Colors.limeAccent, fontSize: 16),
+                style: TextStyle(color: Colors.purple, fontSize: 16),
               ),
-              onPressed: () => {print("btn 1")},
+              onPressed: ()
+                => {print("btn 1")},
             ),
 
             RaisedButton(
               child: Text(
-                "btn 2",
+                // "btn 2",
+                "Increment Age",
                 style: TextStyle(color: Colors.redAccent, fontSize: 16),
               ),
-              onPressed: () => {print("btn 2")},
+              onPressed: ()
+                // => {print("btn 2")},
+                => userNotifier.incrementAge(),
             ),
 
           ],

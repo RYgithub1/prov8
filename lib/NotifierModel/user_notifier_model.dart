@@ -12,10 +12,10 @@ class UserNotifierModel extends ChangeNotifier{
 
 
 
-
   /// [--- Need model data ---]
   String _userName;
-  int _userAge;
+  // int _userAge;
+  int _userAge = 0;  /// [Non data from other widget -> Set initial]
 
 
 
@@ -30,8 +30,11 @@ class UserNotifierModel extends ChangeNotifier{
     _userName = userName;
     notifyListeners();
   }
-  void setUserAge(int userAge) {
-    _userAge = userAge;
+  // void setUserAge(int userAge) {
+  void incrementAge() {
+    _userAge++;
+    _userAge++;
+    _userAge++;
     notifyListeners();
   }
 
