@@ -31,7 +31,8 @@ class _HomePageState extends State<HomePage> {
 
 
     return Scaffold(
-      appBar: AppBar(title: Text("FOOD: HOME PAGE")),
+      // appBar: AppBar(title: Text("FOOD_HOME:"+userNotifier.userName)),
+      appBar: AppBar(title: Text("FOOD_HOME")),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.all(20),

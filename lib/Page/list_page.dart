@@ -18,12 +18,16 @@ class ListPage extends StatelessWidget {
 
 
     return Scaffold(
-      appBar: AppBar(title: Text("FOOD: CHECK PAGE")),
+      // appBar: AppBar(title: Text("FOOD: CHECK PAGE")),
+      appBar: AppBar(
+        // title: Text("FOOD_CHECK: "+userNotifier.userName)),
+        title: Text("FOOD_CHECK")),
+
       body: Container(
         margin: EdgeInsets.all(20),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 20),
+            SizedBox(height: 12),
             ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
@@ -40,34 +44,67 @@ class ListPage extends StatelessWidget {
 
             /// [Stop to Rebuild, coz of here]
             // Text("USER AGE: "+userNotifier.userAge.toString()),
+            // Consumer<UserNotifierModel>(
+            //   builder: (context, valval, child){
+            //     print(valval.userName);
+            //     print(valval.userAge);
+            //     // return Container();
+            //     return Text("USER AGE: "+valval.userAge.toString());
+            //   },
+            // ),
+            /// [Go Selector]
+            // (new) Selector<UserNotifierModel, int> Selector({
+            //     Key key,
+            //     Widget Function(BuildContext, int, Widget) builder,
+            //     int Function(BuildContext, UserNotifierModel) selector,
+            //     bool Function(int, int) shouldRebuild,
+            //     Widget child,
+            // }),
+            Selector<UserNotifierModel, int>(
+              selector: (context, valvaluser) => valvaluser.userAge,
+              /// selector: (context, valvaluser) {return valvaluser.userAge;},  /// if {return XXX;},
+              // builder: (context, valvalage, child) => Text("USER AGE: "+valvalage.toString(),),
+              /// builder: (context, valvalage, child){return Text("USER AGE: "+valvalage.toString());},  /// if {return XXX;},
+              builder: (context, valvalage, child){
+                print("comm: Consumer call user age");
+                return Text("USER AGE: "+valvalage.toString());
+              },
+            ),
+
+            // Selector<UserNotifierModel, String>(
+            //   selector: (context, valvaluser) => valvaluser.userName,
+            //   builder: (context, valvalname, child) => Text("USER NAME: "+valvalname.toString(),),
+            // ),
             Consumer<UserNotifierModel>(
-              builder: (context, valval, child){
-                print(valval.userName);
-                print(valval.userAge);
-                // return Container();
-                return Text("USER AGE: "+valval.userAge.toString());
+              // builder: (context, valval, child) => Text("USER NAME: "+valval.userName.toString(),),
+              builder: (context, valval, child) {
+                print("comm: Consumer call user name");
+                return Text("USER NAME: "+valval.userName.toString());
               },
             ),
 
 
+            SizedBox(height: 20),
             RaisedButton(
               child: Text(
-                "btn 1",
-                style: TextStyle(color: Colors.purple, fontSize: 16),
+                // "btn 1",
+                "Increment Age",
+                style: TextStyle(color: Colors.redAccent, fontSize: 16),
               ),
               onPressed: ()
-                => {print("btn 1")},
+                // => {print("btn 1")},
+                => userNotifier.incrementAge(),
             ),
 
             RaisedButton(
               child: Text(
                 // "btn 2",
-                "Increment Age",
-                style: TextStyle(color: Colors.redAccent, fontSize: 16),
+                "Change Position",
+                style: TextStyle(color: Colors.purple, fontSize: 16),
               ),
               onPressed: ()
                 // => {print("btn 2")},
-                => userNotifier.incrementAge(),
+                => userNotifier.setUserName("SamuraiManager")
             ),
 
           ],
