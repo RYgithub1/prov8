@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:prov8/Notifier/food_notifier.dart';
+import 'package:prov8/NotifierModel/food_notifier_model.dart';
+import 'package:prov8/NotifierModel/user_notifier_model.dart';
 import 'package:provider/provider.dart';
 
 
@@ -8,7 +9,9 @@ class ListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    FoodNotifier foodNotifier = Provider.of<FoodNotifier>(context);
+    FoodNotifierModel foodNotifier = Provider.of<FoodNotifierModel>(context);
+    UserNotifierModel userNotifier = Provider.of<UserNotifierModel>(context);
+
 
     return Scaffold(
       appBar: AppBar(title: Text("FOOD: CHECK PAGE")),

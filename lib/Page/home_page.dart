@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prov8/Notifier/food_notifier.dart';
+import 'package:prov8/NotifierModel/food_notifier_model.dart';
 import 'package:prov8/Page/list_page.dart';
 import 'package:prov8/model/food.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // print(_foodList.length);
-    FoodNotifier foodNotifier = Provider.of<FoodNotifier>(context);
+    FoodNotifierModel foodNotifier = Provider.of<FoodNotifierModel>(context);
 
     return Scaffold(
       appBar: AppBar(title: Text("FOOD: HOME PAGE")),

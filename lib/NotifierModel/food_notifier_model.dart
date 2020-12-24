@@ -4,13 +4,15 @@ import 'package:prov8/model/food.dart';
 
 
 
-class FoodNotifier extends ChangeNotifier{
+class FoodNotifierModel extends ChangeNotifier{
 
+  /// [Need model data]
   List<Food> _foodList = [];
 
+  /// [Need getter]
   UnmodifiableListView<Food> get foodList => UnmodifiableListView(_foodList);
 
-
+  /// [Need method]
   void addFood(Food food) {
     _foodList.add(food);
 
