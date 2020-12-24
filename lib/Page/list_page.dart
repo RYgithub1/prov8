@@ -10,7 +10,9 @@ class ListPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     FoodNotifierModel foodNotifier = Provider.of<FoodNotifierModel>(context);
-    UserNotifierModel userNotifier = Provider.of<UserNotifierModel>(context);
+    // UserNotifierModel userNotifier = Provider.of<UserNotifierModel>(context);
+    /// [Stop rebuild()]
+    UserNotifierModel userNotifier = Provider.of<UserNotifierModel>(context, listen: false);
 
     print("comm: ListView rebuild check");
 
@@ -39,11 +41,11 @@ class ListPage extends StatelessWidget {
             /// [Stop to Rebuild, coz of here]
             // Text("USER AGE: "+userNotifier.userAge.toString()),
             Consumer<UserNotifierModel>(
-              builder: (context, val, child){
-                print(userNotifier.userName);
-                print(userNotifier.userAge);
+              builder: (context, valval, child){
+                print(valval.userName);
+                print(valval.userAge);
                 // return Container();
-                return Text("USER AGE: "+userNotifier.userAge.toString());
+                return Text("USER AGE: "+valval.userAge.toString());
               },
             ),
 
