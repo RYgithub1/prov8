@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:prov8/Notifier/food_notifier.dart';
+import 'package:provider/provider.dart';
 
 
 
 class ListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    FoodNotifier foodNotifier = Provider.of<FoodNotifier>(context);
+
     return Scaffold(
       appBar: AppBar(title: Text("FOOD: CHECK PAGE")),
       body: Container(
@@ -16,9 +21,11 @@ class ListPage extends StatelessWidget {
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
 
-              itemCount: 1,
+              // itemCount: 1,
+              itemCount: foodNotifier.foodList.length,
               itemBuilder: (BuildContext context, int index) => Text(
-                "pppppppppppp",
+                // "pppppppppppp",
+                foodNotifier.foodList[index].name,
               ),
             ),
             SizedBox(height: 20),
